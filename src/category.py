@@ -7,7 +7,7 @@ class Category:
     description: str
     products: list
 
-    def __init__(self, name, description, products):
+    def __init__(self, name: str, description: str, products: list) -> None:
         """Метод для инициализации экземпляра класса."""
         """Задаем значения атрибутам экземпляра."""
         self.name = name
