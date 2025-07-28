@@ -1,15 +1,15 @@
 class Product:
-    """Класс предоставления продукта """
-    name : str
-    description : str
-    price : float
-    quantity : int
+    """Класс предоставления продукта"""
 
-    def __init__(self, name, description, price,quantity ):
+    name: str
+    description: str
+    price: float
+    quantity: int
+
+    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Метод для инициализации экземпляра класса."""
         """Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
         self.price = price
         self.quantity = quantity
-
