@@ -12,6 +12,26 @@ class Category:
         """Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
         Category.category_count += 1
         Category.product_count = len(products)
+
+    @property
+    def products(self):
+        """Создаем геттер для вызова атрибута продкутов"""
+        prod_str = ""
+        for prod in self.__products:
+            prod_str += f"{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n"
+        return prod_str
+
+    @products.setter
+    def add_product(self, prod):
+        """Добавляем сеттер для добавление нового атрибута продукты"""
+        self.__products.append(prod)
+        Category.category_count += 1
+        Category.product_count = len(self.__products)
+
+    @property
+    def poducts_in(self):
+        """Возвращаем список"""
+        return self.__products
