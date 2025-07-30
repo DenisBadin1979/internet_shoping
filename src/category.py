@@ -25,13 +25,13 @@ class Category:
         return prod_str
 
     @products.setter
-    def add_product(self, prod):
+    def products(self, prod):
         """Добавляем сеттер для добавление нового атрибута продукты"""
         self.__products.append(prod)
         Category.category_count += 1
         Category.product_count = len(self.__products)
 
     @property
-    def poducts_in(self):
+    def products_in(self):
         """Возвращаем список"""
         return self.__products
