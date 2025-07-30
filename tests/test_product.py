@@ -1,3 +1,5 @@
+import pytest
+
 from src.product import Product
 
 
@@ -20,3 +22,18 @@ def test_price_new(capsys, product):
     product.price = -100
     message = capsys.readouterr()
     assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+
+
+def test_products_str(product):
+    assert str(product) == "Продукт_Тест, 1.3 руб. Остаток: 5 шт."
+
+
+def test_products_add(product, product1):
+    assert (product + product1) == 17.0
+
+
+def test_iterator_category(prod_iterator):
+    assert prod_iterator.index == 0
+    assert next(prod_iterator).name == "Samsung Galaxy S23 Ultra"
+    with pytest.raises(StopIteration):
+        next(prod_iterator)

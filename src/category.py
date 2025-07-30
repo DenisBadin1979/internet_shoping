@@ -16,12 +16,16 @@ class Category:
         Category.category_count += 1
         Category.product_count = len(products)
 
+    def __str__(self) -> str:
+        """Строковое отображение в следующем виде"""
+        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
+
     @property
     def products(self):
-        """Создаем геттер для вызова атрибута продкутов"""
+        """Создаем геттер для вызова атрибута продуктов"""
         prod_str = ""
         for prod in self.__products:
-            prod_str += f"{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n"
+            prod_str += f"{str(prod)}\n"
         return prod_str
 
     @products.setter
