@@ -2,7 +2,9 @@ import pytest
 
 from src.category import Category
 from src.Category_Iterator import CategoryIterator
+from src.grass import LawnGrass
 from src.product import Product
+from src.smartphone import Smartphone
 
 
 @pytest.fixture
@@ -46,3 +48,42 @@ def four_category():
 @pytest.fixture
 def prod_iterator(three_category):
     return CategoryIterator(three_category)
+
+
+@pytest.fixture
+def smartphone_one():
+    return Smartphone(
+        name="Phone 1",
+        description="256GB, Серый цвет, 200MP камера",
+        price=1.0,
+        quantity=5,
+        efficiency=95.5,
+        model="S23 Ultra",
+        memory=256,
+        color="Серый",
+    )
+
+
+@pytest.fixture
+def smartphone_two():
+    return Smartphone(
+        name="Phone 2",
+        description="Описания нет",
+        price=5.0,
+        quantity=10,
+        efficiency=950.5,
+        model="Раскладушка",
+        memory=512,
+        color="Желтый",
+    )
+
+
+@pytest.fixture
+def grass_one():
+    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+
+@pytest.fixture
+def grass_two():
+    return LawnGrass("Газонная трава 2", "Выносливая трава", 100.0, 200, "США", "5 дней", "Темно-зеленый")
+    #

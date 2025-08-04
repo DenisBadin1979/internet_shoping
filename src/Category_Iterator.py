@@ -1,5 +1,5 @@
 class CategoryIterator:
-    def __init__(self, prod_obj):
+    def __init__(self, prod_obj) -> None:
         """Метод для инициализации экземпляра класса."""
         self.pr = prod_obj
         self.index = 0
