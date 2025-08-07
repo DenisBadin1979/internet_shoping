@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 class Category:
     """Класс предоставления продукта"""
 
@@ -21,7 +24,7 @@ class Category:
         return f"{self.name}, количество продуктов: {len(self.__products)} шт."
 
     @property
-    def products(self):
+    def products(self) -> str:
         """Создаем геттер для вызова атрибута продуктов"""
         prod_str = ""
         for prod in self.__products:
@@ -31,11 +34,14 @@ class Category:
     @products.setter
     def products(self, prod):
         """Добавляем сеттер для добавление нового атрибута продукты"""
-        self.__products.append(prod)
-        Category.category_count += 1
-        Category.product_count = len(self.__products)
+        if isinstance(prod, Product):
+            self.__products.append(prod)
+            Category.category_count += 1
+            Category.product_count = len(self.__products)
+        else:
+            raise TypeError
 
     @property
-    def products_in(self):
+    def products_in(self) -> list:
         """Возвращаем список"""
         return self.__products

@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_category_init(first_category):
     assert first_category.name == "Категория 1"
     assert first_category.description == "Описание категории 1"
@@ -26,3 +29,8 @@ def test_products_setter(three_category, product):
 
 def test_category_str(three_category):
     assert str(three_category) == "Категория 1, количество продуктов: 1 шт."
+
+
+def test_products_setter_error(three_category, product):
+    with pytest.raises(TypeError):
+        three_category.products = 1

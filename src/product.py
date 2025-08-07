@@ -21,14 +21,16 @@ class Product:
         """Строковое отображение в следующем виде"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other) -> int:
+    def __add__(self, other: "Product") -> float:
         """Вычисление суммы стоимости всех товаров"""
-        p1 = self.__price * self.quantity
-        p2 = other.__price * other.quantity
-        return p1 + p2
+        if type(other) is Product:
+            p1 = self.__price * self.quantity
+            p2 = other.__price * other.quantity
+            return p1 + p2
+        raise TypeError
 
     @classmethod
-    def new_product(cls, prod_dict: dict) -> None | Any:
+    def new_product(cls, prod_dict: dict) -> "Product":
         """Вызываем класс-метод для добавления нового продукта"""
         name = prod_dict.get("name")
         description = prod_dict.get("description")
@@ -37,7 +39,7 @@ class Product:
         return cls(name, description, price, quantity)
 
     @property
-    def price(self):
+    def price(self) -> float:
         """Геттер для вызова приватного атрибута цены"""
         return self.__price
 
