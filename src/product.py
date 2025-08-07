@@ -1,7 +1,9 @@
 from typing import Any
+from src.base_product import BatProduct
+from src.print_mixin import PrintMixin
 
 
-class Product:
+class Product(BatProduct, PrintMixin):
     """Класс предоставления продукта"""
 
     name: str
@@ -16,6 +18,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self) -> str:
         """Строковое отображение в следующем виде"""
