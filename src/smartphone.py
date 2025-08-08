@@ -14,7 +14,7 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
-    def __add__(self, other : "Product") -> float:
+    def __add__(self, other: "Product") -> float:
         """Вычисление суммы стоимости всех товаров в классе"""
 
         if type(other) is Smartphone:

@@ -1,4 +1,3 @@
-from typing import Any
 from src.base_product import BatProduct
 from src.print_mixin import PrintMixin
 
