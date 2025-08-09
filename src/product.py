@@ -5,18 +5,18 @@ from src.print_mixin import PrintMixin
 class Product(BatProduct, PrintMixin):
     """Класс предоставления продукта"""
 
-    name: str
-    description: str
-    price: float
-    quantity: int
-
     def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Метод для инициализации экземпляра класса."""
         """Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity > 0:
+            self.quantity = quantity
+        else:
+            raise ValueError(
+                "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с нулевым количеством"
+            )
         super().__init__()
 
     def __str__(self) -> str:
@@ -34,10 +34,10 @@ class Product(BatProduct, PrintMixin):
     @classmethod
     def new_product(cls, prod_dict: dict) -> "Product":
         """Вызываем класс-метод для добавления нового продукта"""
-        name = prod_dict.get("name")
-        description = prod_dict.get("description")
-        price = prod_dict.get("price")
-        quantity = prod_dict.get("quantity")
+        name = prod_dict.get("name", "")
+        description = prod_dict.get("description", "")
+        price = prod_dict.get("price", 0.00)
+        quantity = prod_dict.get("quantity", 0)
         return cls(name, description, price, quantity)
 
     @property

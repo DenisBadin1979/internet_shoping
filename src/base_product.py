@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Self
 
 
 class BatProduct(ABC):
@@ -6,5 +7,5 @@ class BatProduct(ABC):
 
     @classmethod
     @abstractmethod
-    def new_product(cls, *args, **kwargs):
+    def new_product(cls, prod_dict: dict) -> Self:
         pass
