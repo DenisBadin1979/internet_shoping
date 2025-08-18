@@ -87,3 +87,8 @@ def grass_one():
 def grass_two():
     return LawnGrass("Газонная трава 2", "Выносливая трава", 100.0, 200, "США", "5 дней", "Темно-зеленый")
     #
+
+
+@pytest.fixture
+def empty_category():
+    return Category(name="Категория Пусто", description="Описание категории Пусто", products=[])

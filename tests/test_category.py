@@ -34,3 +34,8 @@ def test_category_str(three_category):
 def test_products_setter_error(three_category, product):
     with pytest.raises(TypeError):
         three_category.products = 1
+
+
+def test_middle_price(four_category, empty_category):
+    assert four_category.middle_price() == 100000.0
+    assert empty_category.middle_price() == 0.0
